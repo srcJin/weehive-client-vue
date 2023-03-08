@@ -27,9 +27,12 @@
           </sidebar-link>
         </slot>
       </ul>
-      <!-- <ul class="nav nav-bottom" v-if="$slots['bottom-links']">
+
+      <!-- @todo bottom links , and look at mobile style of sidebar -->
+      <ul class="nav nav-bottom" v-if="$slots['bottom-links']">
         <slot name="bottom-links"></slot>
-      </ul> -->
+        
+      </ul>
     </div>
   </div>
 </template>
