@@ -9,51 +9,52 @@ import HiveManager from "src/pages/HiveManager.vue";
 import HiveWorld from "src/pages/HiveWorld.vue";
 import HiveAtlas from "src/pages/HiveAtlas.vue";
 import Messages from "src/pages/Messages.vue";
+import Test from "src/pages/Recipes.vue";
 
 const routes = [
-  // {
-  //   path: "/",
-  //   component: DashboardLayout,
-  // },
   {
-    path: '/',
+    path: "/",
     component: DashboardLayout,
     children: [
-
-  {
-    path: "dashboard",
-    name: "Dashboard",
-    component: Dashboard,
-  },
-  {
-    path: "user",
-    name: "User",
-    component: User,
-  },
-  {
-    path: "hivemanager",
-    name: "HiveManager",
-    component: HiveManager,
-  },
-  {
-    path: "hiveworld",
-    name: "HiveWorld",
-    component: HiveWorld,
-  },
-  {
-    path: "hiveatlas",
-    name: "HiveAtlas",
-    component: HiveAtlas,
-  },
-  {
-    path: "messages",
-    name: "Messages",
-    component: Messages,
-  },
-],
+      {
+        path: "test",
+        name: "Test",
+        component: Test,
+      },
+      {
+        path: "dashboard",
+        name: "Dashboard",
+        component: Dashboard,
+      },
+      {
+        path: "user",
+        name: "User",
+        component: User,
+      },
+      {
+        path: "hivemanager",
+        name: "HiveManager",
+        component: HiveManager,
+      },
+      {
+        path: "hiveworld",
+        name: "HiveWorld",
+        component: HiveWorld,
+      },
+      {
+        path: "hiveatlas",
+        name: "HiveAtlas",
+        component: HiveAtlas,
+      },
+      {
+        path: "messages",
+        name: "Messages",
+        component: Messages,
+      },
+    ],
   },
   { path: "*", component: NotFound },
-]
+];
 
 /**
  * Asynchronously load view (Webpack Lazy loading compatible)
