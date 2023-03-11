@@ -1,7 +1,11 @@
 <template>
   <div class="wrapper">
     <side-bar>
-      <mobile-menu slot="content"></mobile-menu>
+      <!-- <mobile-menu slot="content"></mobile-menu> -->
+      <sidebar-link to="/tutorials">
+        <i class="nc-icon nc-notes"></i>
+        <p>Tutorial</p>
+      </sidebar-link>
       <sidebar-link to="/test">
         <i class="nc-icon nc-notes"></i>
         <p>Test</p>
@@ -40,7 +44,7 @@
 
       </dashboard-content>
 
-      <content-footer></content-footer>
+      <!-- <content-footer></content-footer> -->
     </div>
   </div>
 </template>

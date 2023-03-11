@@ -21,7 +21,7 @@ import App from "./App.vue";
 import LightBootstrap from "./light-bootstrap-main";
 
 // router setup
-import routes from "./routes/routes";
+import routes from "./vueroutes/vueroutes";
 
 import "./registerServiceWorker";
 // plugin setup

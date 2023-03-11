@@ -16,12 +16,12 @@
 </template>
 <script>
   import EditProfileForm from './UserProfile/EditProfileForm.vue'
-  import UserCard from '../../archive/src/pages/UserProfile/UserCard.vue'
+  // import UserCard from '../../archive/src/pages/UserProfile/UserCard.vue'
 
   export default {
     components: {
       EditProfileForm,
-      UserCard
+      // UserCard
     }
   }
 

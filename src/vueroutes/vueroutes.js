@@ -11,6 +11,10 @@ import HiveAtlas from "src/pages/HiveAtlas.vue";
 import Messages from "src/pages/Messages.vue";
 import Test from "src/pages/Recipes.vue";
 
+import Tutorial from "src/components/Tutorial"
+import AddTutorial from "src/components/AddTutorial"
+import TutorialList from "src/components/TutorialList"
+
 const routes = [
   {
     path: "/",
@@ -21,6 +25,23 @@ const routes = [
         name: "Test",
         component: Test,
       },
+
+      {
+        path: "/tutorials",
+        name: "tutorials",
+        component: TutorialList,
+      },
+      {
+        path: "/tutorials/:id",
+        name: "tutorial-details",
+        component: Tutorial
+      },
+      {
+        path: "/add",
+        name: "add",
+        component: AddTutorial
+      },
+
       {
         path: "dashboard",
         name: "Dashboard",
