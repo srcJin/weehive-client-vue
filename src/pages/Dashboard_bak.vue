@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div class="content">
     <grid-layout
-      :layout.sync="layout1"
+      :layout.sync="layout"
       :responsive-layouts="layouts"
       :col-num="12"
       :row-height="30"
@@ -12,7 +12,7 @@
       :responsive="responsive"
       @breakpoint-changed="breakpointChangedEvent"
     >
-      <grid-item
+    <grid-item
         v-for="item in layout1"
         :x="item.x"
         :y="item.y"
@@ -23,19 +23,8 @@
       >
         <component :is="items[item.i].content"></component>
       </grid-item>
- 
-      <grid-item
-        v-for="item in layout2"
-        :x="item.x"
-        :y="item.y"
-        :w="item.w"
-        :h="item.h"
-        :i="item.i"
-        :key="item.i"
-      >
-        <component :is="items[item.i].content"></component>
-      </grid-item>
     </grid-layout>
+    
     <div class="layoutJSON">
       Displayed as <code>[x, y, w, h]</code>:
       <div class="columns">
@@ -54,54 +43,71 @@
 </template>
 
 <script>
-import VueGridLayout from "vue-grid-layout";
-import Content from "./Content";
-import Chart from "./Chart";
+import { GridLayout, GridItem } from "vue-grid-layout";
+// import ChartCard from 'src/components/Cards/ChartCard.vue'
+// import StatsCard from 'src/components/Cards/StatsCard.vue'
+import myCard from 'src/components/Cards/myCard.vue'
+
+let testLayouts = {
+  myLayout: [
+    { x: 0, y: 0, w: 5, h: 11, i: "0", test: myCard},
+    { x: 0, y: 11, w: 5, h: 10, i: "1", test: myCard },
+    { x: 5, y: 0, w: 3, h: 7, i: "2" },
+    { x: 5, y: 7, w: 3, h: 7, i: "3" },
+    { x: 5, y: 14, w: 3, h: 7, i: "4" },
+  ],
+//   lg: [
+//     { x: 0, y: 0, w: 2, h: 2, i: "0" },
+//     { x: 2, y: 0, w: 2, h: 4, i: "1" },
+//     { x: 4, y: 0, w: 2, h: 5, i: "2" },
+//     { x: 6, y: 0, w: 2, h: 3, i: "3" },
+
+//   ],
+};
+
 
 export default {
-  name: "App",
   components: {
-    GridLayout: VueGridLayout.GridLayout,
-    GridItem: VueGridLayout.GridItem,
-    Content: Content,
-    Chart: Chart,
+    GridLayout,
+    GridItem,
+    myCard:myCard
   },
-  data: () => ({
-    draggable: true,
-    resizable: true,
-    responsive: true,
-    layout1: [
+  data() {
+    return {
+      layouts: testLayouts,
+      layout: testLayouts["myLayout"],
+      draggable: true,
+      resizable: true,
+      responsive: true,
+      layout1: [
       {
         x: 0,
         y: 0,
-        w: 5,
-        h: 10,
+        w: 1,
+        h: 1,
         i: "item-1",
-        test: "ContentTest",
-      },
-    ],
-    layout2: [
-      {
-        x: 6,
-        y: 6,
-        w: 5,
-        h: 10,
-        i: "item-2",
-        test: "ContentTest",
-      },
+        test: "myCard"
+      }
     ],
 
     items: {
       "item-1": {
-        content: () =>
-          import(/* webpackChunkName: "content" */ "./Content.vue"),
+        content: () => import(/* webpackChunkName: "content" */ "../components/Cards/myCard.vue")
       },
-      "item-2": {
-        content: () => import(/* webpackChunkName: "content" */ "./Chart.vue"),
-      },
+    };
+  },
+  };
+  methods: {
+    breakpointChangedEvent: function (newBreakpoint, newLayout) {
+      console.log(
+        "BREAKPOINT CHANGED breakpoint=",
+        newBreakpoint,
+        ", layout: ",
+        newLayout
+      );
     },
-  }),
-};
+  },
+
 </script>
 
 <style scoped>
@@ -147,7 +153,7 @@ export default {
   top: 0;
   left: 0;
   /* background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='5' cy='5' r='5' fill='#999999'/></svg>")
-      no-repeat; */
+    no-repeat; */
   background-position: bottom right;
   padding: 0 8px 8px 0;
   background-repeat: no-repeat;

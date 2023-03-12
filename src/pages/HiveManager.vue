@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="container-fluid">
+    <div>
       <div class="row">
         <div class="col-md-8">
           <AddHive>

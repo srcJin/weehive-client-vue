@@ -1,6 +1,6 @@
 <template>
   <card>
-    <h4 slot="header" class="card-title">New Hive</h4>
+    <h4 slot="header" class="card-title">Register New Hive</h4>
     <form>
       <div class="row">
         <div class="col-md-5">
