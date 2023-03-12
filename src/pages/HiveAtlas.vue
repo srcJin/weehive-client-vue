@@ -25,7 +25,7 @@
           :token="token"
           layer-type="base"
         />
-        <l-control-zoom :position="zoomPosition" />
+        <!-- <l-control-zoom :position="zoomPosition" /> -->
         <l-control-attribution
           :position="attributionPosition"
           :prefix="attributionPrefix"
@@ -54,7 +54,7 @@
             @click="alert(item)"
           />
         </l-layer-group> -->
-        <l-layer-group
+        <!-- <l-layer-group
           v-for="item in stuff"
           :key="item.id"
           :visible.sync="item.visible"
@@ -76,12 +76,11 @@
             :visible="item.polyline.visible"
             @click="alert(item.polyline)"
           />
-        </l-layer-group>
+        </l-layer-group> -->
       </l-map>
     </div>
-    <div class="container p-10"></div>
     <div class="container mt-3">
-      Zoom: level
+      <!-- Zoom: level
       <input v-model.number="zoom" type="number" />
       position:
       <select v-model="zoomPosition">
@@ -95,9 +94,7 @@
       </select>
       <br />
       Center : <span> {{ center }} </span><br />
-      Bounds : <span> {{ bounds }} </span><br />
-      <button name="button" @click="fitPolyline">Fit map to polyline</button
-      >
+      Bounds : <span> {{ bounds }} </span><br /> -->
       <!-- <br /><br /> -->
       <!-- Contol Layers position:
       <select v-model="layersPosition">
@@ -120,8 +117,8 @@
         </option>
       </select>
       <hr /> -->
-      <hr />
-      <h3>Find your hive!</h3>
+      <!-- <hr /> -->
+      <h3>Welcome to the world of hives!</h3>
       <table>
         <tr>
           <th>Hive</th>
@@ -159,7 +156,11 @@
           </td>
         </tr>
       </table>
-      <button name="button" @click="addMarker">Add a hive!</button>
+      <div class="mt-3">
+      <button name="button" class="btn btn-primary me-3" @click="addMarker">Add a hive!</button>
+      <button name="button" class="btn btn-primary" @click="fitPolyline">Find my hive!</button>
+      </div>
+
       <!-- <table>
         <tr>
           <th>Layer</th>

@@ -22,9 +22,9 @@ module.exports = {
     ]
   },
   pwa: {
-    name: 'Vue Light Bootstrap Dashboard',
-    themeColor: '#344675',
-    msTileColor: '#344675',
+    name: 'weehive-client',
+    // themeColor: '#344675',
+    // msTileColor: '#344675',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: '#344675'
   },
