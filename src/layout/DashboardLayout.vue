@@ -35,7 +35,6 @@
         <p>Messages</p>
       </sidebar-link>
 
-
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>

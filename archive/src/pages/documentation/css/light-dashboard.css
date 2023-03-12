@@ -7139,7 +7139,7 @@ star {
   display: inline-block;
   min-width: 110px;
 }
-
+/* 
 .tooltip {
   font-size: 14px;
   font-weight: 600;
@@ -7248,7 +7248,7 @@ star {
   left: 100%;
   margin-left: -60%;
   position: absolute;
-}
+} */
 
 .popover {
   padding: 0;

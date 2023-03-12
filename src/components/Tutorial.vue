@@ -77,17 +77,18 @@
       },
   
       updatePublished(status) {
+        console.log("updatePublished status=", status)
+        console.log("updatePublished this.currentTutorial=", this.currentTutorial)
         var data = {
-          id: this.currentTutorial.id,
+          userId: this.currentTutorial.userId,
           title: this.currentTutorial.title,
           description: this.currentTutorial.description,
           published: status
         };
   
-        DataService.update(this.currentTutorial.id, data)
+        DataService.update(this.currentTutorial.userId, data)
           .then(response => {
             this.currentTutorial.published = status;
-            console.log(response.data);
           })
           .catch(e => {
             console.log(e);
@@ -95,7 +96,8 @@
       },
   
       updateTutorial() {
-        DataService.update(this.currentTutorial.id, this.currentTutorial)
+        console.log("this.currentTutorial=",this.currentTutorial)
+        DataService.update(this.currentTutorial.userId, this.currentTutorial) //@note use this line to define which id to use
           .then(response => {
             console.log(response.data);
             this.message = 'The tutorial was updated successfully!';
@@ -106,7 +108,7 @@
       },
   
       deleteTutorial() {
-        DataService.delete(this.currentTutorial.id)
+        DataService.delete(this.currentTutorial.userId)
           .then(response => {
             console.log(response.data);
             this.$router.push({ name: "tutorials" });
@@ -118,6 +120,7 @@
     },
     mounted() {
       this.message = '';
+      console.log('mounted() this.$route.params=', this.$route.params)
       this.getTutorial(this.$route.params.id);
     }
   };

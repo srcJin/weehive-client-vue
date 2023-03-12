@@ -15,13 +15,17 @@
   </div>
 </template>
 <script>
-  import EditProfileForm from './UserProfile/EditProfileForm.vue'
-  import UserCard from '../../archive/src/pages/UserProfile/UserCard.vue'
+  import EditProfileForm from './User/AddUser.vue'
+  import UserCard from './User/UserCard.vue'
+  import EditUser from './User/EditUser.vue'
+  import UserList from './User/UserList.vue'
 
   export default {
     components: {
       EditProfileForm,
-      UserCard
+      UserCard,
+      EditUser,
+      UserList
     }
   }
 
