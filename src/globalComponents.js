@@ -13,7 +13,7 @@ const GlobalComponents = {
     Vue.component(BaseInput.name, BaseInput)
     Vue.component(BaseCheckbox.name, BaseCheckbox)
     Vue.component(BaseRadio.name, BaseRadio)
-    Vue.component(BaseDropdown.name, BaseDropdown)
+    // Vue.component(BaseDropdown.name, BaseDropdown)
     Vue.component('card', Card)
   }
 }

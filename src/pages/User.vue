@@ -3,26 +3,34 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8">
-          <edit-profile-form>
-          </edit-profile-form>
+          <AddUser>
+          </AddUser>
         </div>
         <div class="col-md-4">
-          <user-card>
-          </user-card>
+          <UserCard>
+          </UserCard>
+        </div>
+        <div class="col-md-8">
+          <EditUser>
+          </EditUser>
+        </div>
+        <div class="col-md-4">
+          <UserList>
+          </UserList>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import EditProfileForm from './User/AddUser.vue'
+  import AddUser from './User/AddUser.vue'
   import UserCard from './User/UserCard.vue'
   import EditUser from './User/EditUser.vue'
   import UserList from './User/UserList.vue'
 
   export default {
     components: {
-      EditProfileForm,
+      AddUser,
       UserCard,
       EditUser,
       UserList

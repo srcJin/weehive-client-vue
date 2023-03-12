@@ -3,12 +3,20 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8">
-          <edit-profile-form>
-          </edit-profile-form>
+          <AddHive>
+          </AddHive>
         </div>
         <div class="col-md-4">
-          <user-card>
-          </user-card>
+          <HiveCard>
+          </HiveCard>
+        </div>
+        <div class="col-md-8">
+          <EditHive>
+          </EditHive>
+        </div>
+        <div class="col-md-8">
+          <HiveList>
+          </HiveList>
         </div>
       </div>
     </div>
