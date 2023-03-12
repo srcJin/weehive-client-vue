@@ -40,10 +40,12 @@
           :icon="marker.icon"
           @click="alert(marker)"
         >
+          <!-- @todo add popup info for beehives -->
           <l-popup :content="marker.info" />
-          <l-tooltip :content="marker.info" />
+          <l-tooltip :content="marker.info" /> 
         </l-marker>
-        <l-layer-group layer-type="overlay" name="Layer polyline">
+
+        <!-- <l-layer-group layer-type="overlay" name="Layer polyline">
           <l-polyline
             v-for="item in polylines"
             :key="item.id"
@@ -51,7 +53,7 @@
             :visible="item.visible"
             @click="alert(item)"
           />
-        </l-layer-group>
+        </l-layer-group> -->
         <l-layer-group
           v-for="item in stuff"
           :key="item.id"

@@ -2370,7 +2370,7 @@ hr.fc-divider {
   text-align: right;
   border-bottom-width: 1px;
   font-size: 0.9em;
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
   color: #9A9A9A;
   font-weight: 400;
   padding-bottom: 3px;
@@ -4598,7 +4598,7 @@ select.selectpicker {
   text-align: center;
   border-bottom: 1px solid #E3E3E3;
   font-size: 12px;
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
   color: #9A9A9A;
   font-weight: 400;
   padding-bottom: 5px;
@@ -5073,7 +5073,7 @@ h5, .h5 {
 h6, .h6 {
   font-size: 0.9em;
   font-weight: 600;
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 p {
@@ -5092,7 +5092,7 @@ h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
 }
 
 .title-uppercase {
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 blockquote {
@@ -5225,7 +5225,7 @@ strong {
 }
 .sidebar .logo .simple-text,
 .off-canvas-sidebar .logo .simple-text {
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
   padding: 4px 0px;
   display: inline-block;
   font-size: 18px;
@@ -5314,7 +5314,7 @@ strong {
   line-height: 30px;
   font-size: 12px;
   font-weight: 600;
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
   position: relative;
   -webkit-transform: translate3d(0px, 0, 0);
   -moz-transform: translate3d(0px, 0, 0);
@@ -5355,7 +5355,7 @@ strong {
 .sidebar .sidebar-wrapper .user .info [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini,
 .off-canvas-sidebar .sidebar-wrapper > .nav [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini,
 .off-canvas-sidebar .sidebar-wrapper .user .info [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini {
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
   float: left;
   width: 30px;
   text-align: center;
@@ -7747,7 +7747,7 @@ star {
   margin: 10px 0 20px 0;
 }
 .card .card-content .big-title {
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
   text-align: center;
 }
 .card .card-content .category ~ .card-title {
@@ -8009,7 +8009,7 @@ star {
   border: none;
   background-color: #9A9A9A;
   color: #FFFFFF;
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 .card-wizard .nav-pills > li > a:hover, .card-wizard .nav-pills > li > a:focus {
   background-color: #9A9A9A;
@@ -8397,7 +8397,7 @@ star {
   color: #FFFFFF;
   font-weight: 500;
   font-size: 0.75em;
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
   display: inline-block;
   line-height: 1.5em;
 }
@@ -9761,7 +9761,7 @@ star {
   color: #FFFFFF;
   font-weight: 500;
   font-size: 0.75em;
-  text-transform: uppercase;
+    /* text-transform: uppercase; */
   display: inline-block;
   line-height: 1.5em;
   padding-left: 0.8em;
@@ -11017,7 +11017,7 @@ star {
     line-height: 30px;
     font-size: 12px;
     font-weight: 600;
-    text-transform: uppercase;
+      /* text-transform: uppercase; */
     position: relative;
     left: 0;
     opacity: 1;

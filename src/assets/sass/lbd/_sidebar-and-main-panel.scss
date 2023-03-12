@@ -51,7 +51,7 @@ body > .navbar-collapse{
         }
 
         .simple-text{
-            text-transform: uppercase;
+              /* text-transform: uppercase; */
             padding: $padding-small-vertical $padding-zero;
             font-size: $font-size-large;
             color: $white-color;
@@ -95,14 +95,15 @@ body > .navbar-collapse{
     }
 
     .nav{
-        margin-top: 20px;
+        margin-top: 1vh;
         float: none;
         display: block;
 
         li{
             .nav-link{
                 color: $white-color;
-                margin: 5px 15px;
+                /* @note here to control the sidebar text margins */
+                margin: 10px 15px;
                 opacity: .86;
                 border-radius: 4px;
                 display: block;
@@ -116,9 +117,10 @@ body > .navbar-collapse{
                 p{
                     margin: 0;
                     line-height: 31px;
-                    font-size: 12px;
+                      /* @note here to control the sidebar font size */
+                    font-size: 16px;
                     font-weight: 600;
-                    text-transform: uppercase;
+                      /* text-transform: uppercase; */
                     display: inline-flex;
                 }
 
@@ -179,7 +181,7 @@ body > .navbar-collapse{
             margin: 5px 15px;
             opacity: .86;
             border-radius: 4px;
-            text-transform: uppercase;
+              /* text-transform: uppercase; */
             line-height: 30px;
             font-size: 12px;
             font-weight: 600;
@@ -200,7 +202,7 @@ body > .navbar-collapse{
         }
 
         .simple-text{
-            text-transform: uppercase;
+              /* text-transform: uppercase; */
             padding: $padding-small-vertical $padding-zero;
             display: flex;
             align-items: center;
