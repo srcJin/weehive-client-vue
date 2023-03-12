@@ -23,19 +23,8 @@
       >
         <component :is="items[item.i].content"></component>
       </grid-item>
- 
-      <grid-item
-        v-for="item in layout2"
-        :x="item.x"
-        :y="item.y"
-        :w="item.w"
-        :h="item.h"
-        :i="item.i"
-        :key="item.i"
-      >
-        <component :is="items[item.i].content"></component>
-      </grid-item>
     </grid-layout>
+
     <div class="layoutJSON">
       Displayed as <code>[x, y, w, h]</code>:
       <div class="columns">
@@ -71,33 +60,28 @@ export default {
     resizable: true,
     responsive: true,
     layout1: [
-      {
-        x: 0,
-        y: 0,
-        w: 5,
-        h: 10,
-        i: "item-1",
-        test: "ContentTest",
-      },
-    ],
-    layout2: [
-      {
-        x: 6,
-        y: 6,
-        w: 5,
-        h: 10,
-        i: "item-2",
-        test: "ContentTest",
-      },
-    ],
+    { x: 0, y: 0, w: 5, h: 10, i: "item-1"},
+    { x: 0, y: 11, w: 5, h: 11, i: "item-2"},
+    { x: 5, y: 0, w: 3, h: 7, i: "item-3" },
+    { x: 5, y: 7, w: 3, h: 7, i: "item-4" },
+    { x: 5, y: 14, w: 3, h: 7, i: "item-5" },
 
+    ],
     items: {
       "item-1": {
-        content: () =>
-          import(/* webpackChunkName: "content" */ "./Content.vue"),
+        content: () => import("./Dashboard/HiveInfo.vue"),
       },
       "item-2": {
-        content: () => import(/* webpackChunkName: "content" */ "./Chart.vue"),
+        content: () => import("./Dashboard/LineChart.vue"),
+      },
+      "item-3": {
+        content: () => import("./Dashboard/HiveInfo.vue"),
+      },
+      "item-4": {
+        content: () => import("./Dashboard/HiveInfo.vue"),
+      },
+      "item-5": {
+        content: () => import("./Dashboard/Stats.vue"),
       },
     },
   }),

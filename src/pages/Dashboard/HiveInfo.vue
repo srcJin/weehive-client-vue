@@ -1,54 +1,31 @@
 <template>
-    <div class="card" :class="[type && `card-${type}`]">
-      <div class="card-image" v-if="$slots.image">
-        <slot name="image"></slot>
-      </div>
-      <div class="card-header" v-if="$slots.header || title" :class="headerClasses">
-        <slot name="header">
-          <h4 class="card-title">{{title}}</h4>
-          <p class="card-category" v-if="subTitle">{{subTitle}}</p>
-        </slot>
-      </div>
-      <div class="card-body" v-if="$slots.default" :class="bodyClasses">
-        <slot></slot>
-      </div>
-      <slot name="raw-content"></slot>
-      <div class="card-footer" :class="footerClasses" v-if="$slots.footer">
-        <slot name="footer"></slot>
-      </div>
+  <card class="card-user">
+    <img slot="image" src="userBackgroundImage" alt="Header Image"/>
+    <div class="author">
+      <a href="#">
+        <img class="avatar border-gray" src="img/faces/defaultUserIcon.jpg" alt="User Icon"/>
+
+        <h4 class="title">Jin<br />
+          <small>Admin</small>
+        </h4>
+      </a>
     </div>
-  </template>
-  <script>
-    export default {
-      name: "card",
-      props: {
-        title: {
-          type: String,
-          description: "Card title"
-        },
-        subTitle: {
-          type: String,
-          description: "Card subtitle"
-        },
-        type: {
-          type: String,
-          description: "Card type (e.g primary/danger etc)"
-        },
-        headerClasses: {
-          type: [String, Object, Array],
-          description: "Card header css classes"
-        },
-        bodyClasses: {
-          type: [String, Object, Array],
-          description: "Card body css classes"
-        },
-        footerClasses: {
-          type: [String, Object, Array],
-          description: "Card footer css classes"
-        }
-      }
-    };
-  </script>
-  <style>
-  </style>
-  
+    <p class="description text-center"> Hi! I am a new beekeeper! </p>
+    <!-- <div slot="footer" class="text-center d-flex justify-content-center">
+      <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+      <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+      <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+    </div> -->
+  </card>
+</template>
+
+<script>
+import Card from "../../components/Cards/Card.vue";
+export default {
+  name: "HiveInfo",
+  components: {
+    Card,
+  },
+};
+</script>
+<style></style>
