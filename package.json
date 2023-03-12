@@ -1,16 +1,16 @@
 {
-  "name": "vue-light-bootstrap-dashboard",
-  "version": "2.1.0",
-  "private": true,
-  "description": "Vue light bootstrap dashboard",
-  "author": "cristijora <joracristi@gmail.com>",
+  "name": "weehive-client",
+  "version": "0.0.1",
+  "description": "weehive-client",
+  "author": "SrcJin",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "e2e": "node test/e2e/runner.js",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve --open",
-    "lint-fix": "vue-cli-service lint --fix"
+    "lint-fix": "vue-cli-service lint --fix",
+    "start": "vue-cli-service serve --open"
   },
   "dependencies": {
     "axios": "^1.3.4",
@@ -19,7 +19,6 @@
     "chartist": "0.11.0",
     "leaflet": "^1.9.3",
     "register-service-worker": "1.7.2",
-    "v-tooltip": "2.0.0-rc.33",
     "vue": "2.7.14",
     "vue-router": "3.0.2",
     "vue2-leaflet": "^2.7.1"
