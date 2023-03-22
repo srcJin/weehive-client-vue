@@ -2,7 +2,7 @@
     <div class="list row">
       <div class="col-md-8">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Search by title"
+          <input type="text" class="form-control" placeholder="Search by name"
             v-model="title"/>
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button"
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <h4>Tutorials List</h4>
+        <h4>Hive List</h4>
         <ul class="list-group">
           <li class="list-group-item"
             :class="{ active: index == currentIndex }"
@@ -32,9 +32,9 @@
       </div>
       <div class="col-md-6">
         <div v-if="currentTutorial">
-          <h4>Tutorial</h4>
+          <h4>Current Beehive Info</h4>
           <div>
-            <label><strong>Title:</strong></label> {{ currentTutorial.title }}
+            <label><strong>Name:</strong></label> {{ currentTutorial.title }}
           </div>
           <div>
             <label><strong>Description:</strong></label> {{ currentTutorial.description }}
@@ -51,7 +51,7 @@
         </div>
         <div v-else>
           <br />
-          <p>Please click on a Tutorial...</p>
+          <p>Please click on a name...</p>
         </div>
       </div>
     </div>
@@ -88,9 +88,19 @@
         this.currentIndex = -1;
       },
   
+      // @todo add a new function to do both setActiveTutorial and push to new page
+      trigger(tutorial, index) {
+      },
+
+
       setActiveTutorial(tutorial, index) {
+        console.log("setActiveTutorial tutorial=",tutorial,"index=",index)
         this.currentTutorial = tutorial;
         this.currentIndex = index;
+        // @note added with TA
+        console.log("this.currentTutorial.userId=",this.currentTutorial.userId)
+        let id = this.currentTutorial.userId
+        this.$router.push('tutorials/' + id)
       },
   
       removeAllTutorials() {

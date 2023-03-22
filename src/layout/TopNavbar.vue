@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Dashboard</a>
+      <a class="navbar-brand" v-bind:href="url">{{ getPageTitle }}</a>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
@@ -67,6 +67,14 @@
 <script>
   export default {
     computed: {
+      pageTitle() {
+        console.log("pageTitle document.title=", document.title)
+      return document.title;
+    },
+    url() {
+      return window.location.href;
+    },
+
       routeName () {
         const {name} = this.$route
         return this.capitalizeFirstLetter(name)
@@ -100,3 +108,8 @@
 <style>
 
 </style>
+
+<!-- https://router.vuejs.org/guide/essentials/navigation.html
+https://stackoverflow.com/questions/47170533/how-can-vue-router-get-current-route-path-of-lazy-loaded-modules-on-page-load
+https://router.vuejs.org/guide/essentials/passing-props.html -->
+

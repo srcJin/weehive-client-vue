@@ -1,9 +1,9 @@
 <template>
     <div v-if="currentTutorial" class="edit-form">
-      <h4>Tutorial</h4>
+      <h4>Current Beehive</h4>
       <form>
         <div class="form-group">
-          <label for="title">Title</label>
+          <label for="title">Name</label>
           <input type="text" class="form-control" id="title"
             v-model="currentTutorial.title"
           />
@@ -16,33 +16,38 @@
         </div>
   
         <div class="form-group">
-          <label><strong>Status:</strong></label>
-          {{ currentTutorial.published ? "Published" : "Pending" }}
+          <label><strong>Inspected:</strong></label>
+          {{ currentTutorial.published ? "Inspected" : "Not Yet" }}
         </div>
       </form>
   
-      <button class="badge badge-primary mr-2"
+      <button class="btn btn-primary me-3"
         v-if="currentTutorial.published"
         @click="updatePublished(false)"
       >
-        UnPublish
+        UnInspect
       </button>
-      <button v-else class="badge badge-primary mr-2"
+      <button v-else class="btn btn-primary me-3"
         @click="updatePublished(true)"
       >
-        Publish
+        Inspect
       </button>
   
-      <button class="badge badge-danger mr-2"
+      <button class="btn btn-primary me-3"
         @click="deleteTutorial"
       >
         Delete
       </button>
   
-      <button type="submit" class="badge badge-success"
+      <button type="submit" class="btn btn-primary me-3 badge-success"
         @click="updateTutorial"
       >
         Update
+      </button>
+      <button type="submit" class="btn btn-primary me-3 badge-success"
+        @click="goBack"
+      >
+        Back
       </button>
       <p>{{ message }}</p>
     </div>
@@ -100,7 +105,7 @@
         DataService.update(this.currentTutorial.userId, this.currentTutorial) //@note use this line to define which id to use
           .then(response => {
             console.log(response.data);
-            this.message = 'The tutorial was updated successfully!';
+            this.message = 'The information was updated successfully!';
           })
           .catch(e => {
             console.log(e);
@@ -116,6 +121,11 @@
           .catch(e => {
             console.log(e);
           });
+      },
+
+      goBack() {
+        this.$router.go(-1);
+
       }
     },
     mounted() {

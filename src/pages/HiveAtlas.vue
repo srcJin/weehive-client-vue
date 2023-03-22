@@ -8,7 +8,7 @@
         :bounds="bounds"
         :min-zoom="minZoom"
         :max-zoom="maxZoom"
-        style="height: 50vh; width: 100%"
+        style="height: 60vh; width: 100%"
       >
         <l-control-layers
           :position="layersPosition"
@@ -286,6 +286,17 @@ const tileProviders = [
 
 export default {
   name: "Example",
+  // use the created() lifecycle hook and set the document.title property
+  // to the desired value, as described in my previous answer.
+  // props: {
+  //   pageTitle: {
+  //     type: String,
+  //     required: true,
+  //   },
+  // },
+  // created() {
+  //   document.title = "this.pageTitle"; // Set the page title here
+  // },
   components: {
     LMap,
     LTileLayer,

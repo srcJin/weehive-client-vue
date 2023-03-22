@@ -6,7 +6,7 @@
 
       <sidebar-link to="/dashboard">
         <i class="nc-icon nc-chart-pie-35"></i>
-        <p>Dashboard</p>
+        <p>HiveCenter</p>
       </sidebar-link>
 
       <sidebar-link to="/hivemanager">
@@ -17,10 +17,10 @@
         <i class="nc-icon nc-atom"></i>
         <p>HiveAtlas</p>
       </sidebar-link>
-      <sidebar-link to="/hiveworld">
+      <!-- <sidebar-link to="/hiveworld">
         <i class="nc-icon nc-paper-2"></i>
         <p>HiveWorld</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <!-- top division line -->
       <hr class="responsive-divider"/>
       <!-- bottom division line -->
@@ -33,14 +33,14 @@
         <i class="nc-icon nc-bell-55"></i>
         <p>Messages</p>
       </sidebar-link>
-      <sidebar-link to="/tutorials">
+      <!-- <sidebar-link to="/tutorials">
         <i class="nc-icon nc-notes"></i>
-        <p>Tutorial</p>
-      </sidebar-link>
-      <sidebar-link to="/test">
+        <p>API</p>
+      </sidebar-link> -->
+      <!-- <sidebar-link to="/test">
         <i class="nc-icon nc-notes"></i>
         <p>Test</p>
-      </sidebar-link>
+      </sidebar-link> -->
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>
