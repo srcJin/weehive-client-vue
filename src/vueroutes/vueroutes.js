@@ -1,6 +1,6 @@
 import DashboardLayout from "../layout/DashboardLayout.vue";
 // GeneralViews
-import NotFound from "../pages/NotFoundPage.vue";
+import NotFound from "../pages/404.vue";
 
 // Admin pages
 import Dashboard from "src/pages/Dashboard.vue";
@@ -9,11 +9,20 @@ import HiveManager from "src/pages/HiveManager.vue";
 import HiveWorld from "src/pages/HiveWorld.vue";
 import HiveAtlas from "src/pages/HiveAtlas.vue";
 import Messages from "src/pages/Messages.vue";
-import Test from "src/pages/Recipes.vue";
 
 import Tutorial from "src/components/Tutorial"
 import AddTutorial from "src/components/AddTutorial"
 import TutorialList from "src/components/TutorialList"
+
+import UserList from "src/pages/User/UserList";
+import AddUser from "src/pages/User/AddUser";
+import UserCard from "src/pages/User/UserCard";
+import EditUser from "src/pages/User/EditUser";
+
+import HiveList from "src/pages/HiveManager/HiveList";
+import AddHive from "src/pages/HiveManager/AddHive";
+import HiveCard from "src/pages/HiveManager/HiveCard";
+import EditHive from "src/pages/HiveManager/EditHive";
 
 const routes = [
   {
@@ -21,10 +30,49 @@ const routes = [
     component: DashboardLayout,
     children: [
       {
-        path: "test",
-        name: "Test",
-        component: Test,
+        path: "UserList",
+        name: "UserList",
+        component: UserList,
       },
+      {
+        path: "AddUser",
+        name: "AddUser",
+        component: AddUser,
+      },      
+      {
+        path: "UserCard",
+        name: "UserCard",
+        component: UserCard,
+      },      
+      {
+        path: "EditUser",
+        name: "EditUser",
+        component: EditUser,
+      },
+
+
+      {
+        path: "HiveList",
+        name: "HiveList",
+        component: HiveList,
+      },
+      {
+        path: "AddHive",
+        name: "AddHive",
+        component: AddHive,
+      },      
+
+      {
+        path: "HiveCard",
+        name: "HiveCard",
+        component: HiveCard,
+      },      
+      {
+        path: "EditHive",
+        name: "EditHive",
+        component: EditHive,
+      },
+
 
       {
         path: "/tutorials",
@@ -36,6 +84,7 @@ const routes = [
         name: "tutorial-details",
         component: Tutorial
       },
+
       {
         path: "/add",
         name: "add",
