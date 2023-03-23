@@ -6,8 +6,8 @@
         <div class="col-md-5">
           <base-input type="text"
                     label="Username"
-                    placeholder="username"
-                    v-model="user.username">
+                    placeholder="userName"
+                    v-model="user.userName">
           </base-input>
         </div>
         <div class="col-md-3">
@@ -107,7 +107,7 @@
     data () {
       return {
         user: {
-          username: 'Jin',
+          userName: 'Jin',
           email: 'hello@hello.com',
           adminType: '1',
           Icon: 'defaultUserIcon.png',

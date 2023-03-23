@@ -35,7 +35,7 @@
   </template>
   
   <script>
-  import TutorialDataService from "../services/DataService";
+  import DataService from "../services/DataService";
   
   export default {
     name: "add-tutorial",
@@ -57,10 +57,10 @@
           description: this.tutorial.description
         };
   
-        TutorialDataService.create(data)
+        DataService.create(data)
           .then(response => {
             this.tutorial.id = response.data.id;
-            console.log(response.data);
+            console.log('AddTutorial,DataService.create(data) response.data = ',response.data);
             this.submitted = true;
           })
           .catch(e => {

@@ -1,7 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" v-bind:href="url">{{ getPageTitle }}</a>
+      <!-- @todo adjust page title of the top bar -->
+      <a class="navbar-brand" v-bind:href="url">Dashboard</a>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"

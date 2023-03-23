@@ -3,10 +3,10 @@
     <div class="col-md-8">
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search by name"
-          v-model="title"/>
+          v-model="userName"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
-            @click="searchTitle"
+            @click="searchByUserName"
           >
             Search
           </button>
@@ -22,29 +22,34 @@
           :key="index"
           @click="setActiveUser(user, index)"
         >
-          {{ user.title }}
+          {{ user.userName }}
         </li>
       </ul>
-
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllUsers">
+      <button class="m-3 btn btn-md btn-primary" @click="editActiveUser">
+        editActiveUser
+      </button>
+      <button class="m-3 btn btn-md btn-danger" @click="removeAllUsers">
         Remove All
       </button>
+
     </div>
     <div class="col-md-6">
       <div v-if="currentUser">
-        <h4>Current Beehive Info</h4>
+        <!-- @todo user list display -->
+
+        <h4>Current User Info</h4>
         <div>
-          <label><strong>Name:</strong></label> {{ currentUser.title }}
+          <label><strong>Name:</strong></label> {{ currentUser.userName }}
         </div>
         <div>
-          <label><strong>Description:</strong></label> {{ currentUser.description }}
+          <label><strong>adminType:</strong></label> {{ currentUser.adminType }}
         </div>
         <div>
-          <label><strong>Status:</strong></label> {{ currentUser.published ? "Published" : "Pending" }}
+          <label><strong>aboutMe:</strong></label> {{ currentUser.aboutMe}}
         </div>
 
         <a class="badge badge-warning"
-          :href="'/users/' + currentUser.id"
+          :href="'/user/' + currentUser.id"
         >
           Edit
         </a>
@@ -58,7 +63,7 @@
 </template>
 
 <script>
-import UserDataService from "../../services/DataService";
+import DataService from "../../services/DataService";
 
 export default {
   name: "users-list",
@@ -67,12 +72,12 @@ export default {
       users: [],
       currentUser: null,
       currentIndex: -1,
-      title: ""
+      aboutMe: ""
     };
   },
   methods: {
-    retrieveUser() {
-      UserDataService.getAll()
+    retrieveUsers() {
+      DataService.getAllUser()
         .then(response => {
           this.users = response.data;
           console.log(response.data);
@@ -88,10 +93,6 @@ export default {
       this.currentIndex = -1;
     },
 
-    // @todo add a new function to do both setActiveUser and push to new page
-    trigger(user, index) {
-    },
-
 
     setActiveUser(user, index) {
       console.log("setActiveUser user=",user,"index=",index)
@@ -99,12 +100,15 @@ export default {
       this.currentIndex = index;
       // @note added with TA
       console.log("this.currentUser.userId=",this.currentUser.userId)
+    },
+
+    editActiveUser(){
       let id = this.currentUser.userId
-      this.$router.push('users/' + id)
+      this.$router.push('user/' + id)
     },
 
     removeAllUsers() {
-      UserDataService.deleteAll()
+      DataService.deleteAll()
         .then(response => {
           console.log(response.data);
           this.refreshList();
@@ -114,8 +118,8 @@ export default {
         });
     },
     
-    searchTitle() {
-      UserDataService.findByTitle(this.title)
+    searchByUserName() {
+      DataService.findByUserName(this.userName)
         .then(response => {
           this.users = response.data;
           console.log(response.data);

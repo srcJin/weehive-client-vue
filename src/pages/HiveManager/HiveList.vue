@@ -3,10 +3,10 @@
     <div class="col-md-8">
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search by name"
-          v-model="title"/>
+          v-model="hiveName"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
-            @click="searchTitle"
+            @click="searchByHiveName"
           >
             Search
           </button>
@@ -14,37 +14,40 @@
       </div>
     </div>
     <div class="col-md-6">
-      <h4>User List</h4>
+      <h4>Hive List</h4>
       <ul class="list-group">
         <li class="list-group-item"
           :class="{ active: index == currentIndex }"
-          v-for="(user, index) in users"
+          v-for="(hive, index) in hives"
           :key="index"
-          @click="setActiveUser(user, index)"
+          @click="setActiveHive(hive, index)"
         >
-          {{ user.title }}
+          {{ hive.title }}
         </li>
       </ul>
-
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllUsers">
+      <button class="m-3 btn btn-md btn-primary" @click="editActiveHive">
+        editActiveHive
+      </button>
+      <button class="m-3 btn btn-md btn-danger" @click="removeAllHives">
         Remove All
       </button>
     </div>
     <div class="col-md-6">
-      <div v-if="currentUser">
+      <!-- @todo hive list display -->
+      <div v-if="currentHive">
         <h4>Current Beehive Info</h4>
         <div>
-          <label><strong>Name:</strong></label> {{ currentUser.title }}
+          <label><strong>hiveName:</strong></label> {{ currentHive.hiveName }}
         </div>
         <div>
-          <label><strong>Description:</strong></label> {{ currentUser.description }}
+          <label><strong>location:</strong></label> {{ currentHive.location }}
         </div>
         <div>
-          <label><strong>Status:</strong></label> {{ currentUser.published ? "Published" : "Pending" }}
+          <label><strong>queenName:</strong></label> {{ currentHive.queenName }}
         </div>
 
         <a class="badge badge-warning"
-          :href="'/users/' + currentUser.id"
+          :href="'/hive/' + currentHive.id"
         >
           Edit
         </a>
@@ -58,23 +61,23 @@
 </template>
 
 <script>
-import UserDataService from "../../services/DataService";
+import HiveDataService from "../../services/DataService";
 
 export default {
-  name: "users-list",
+  name: "hives-list",
   data() {
     return {
-      users: [],
-      currentUser: null,
+      hives: [],
+      currentHive: null,
       currentIndex: -1,
       title: ""
     };
   },
   methods: {
-    retrieveUser() {
-      UserDataService.getAll()
+    retrieveHives() {
+      HiveDataService.getAllHive()
         .then(response => {
-          this.users = response.data;
+          this.hives = response.data;
           console.log(response.data);
         })
         .catch(e => {
@@ -83,28 +86,32 @@ export default {
     },
 
     refreshList() {
-      this.retrieveUsers();
-      this.currentUser = null;
+      this.retrieveHives();
+      this.currentHive = null;
       this.currentIndex = -1;
     },
 
-    // @todo add a new function to do both setActiveUser and push to new page
-    trigger(user, index) {
+    // @todo add a new function to do both setActiveHive and push to new page
+    trigger(hive, index) {
     },
 
 
-    setActiveUser(user, index) {
-      console.log("setActiveUser user=",user,"index=",index)
-      this.currentUser = user;
+    setActiveHive(hive, index) {
+      console.log("setActiveHive hive=",hive,"index=",index)
+      this.currentHive = hive;
       this.currentIndex = index;
       // @note added with TA
-      console.log("this.currentUser.userId=",this.currentUser.userId)
-      let id = this.currentUser.userId
-      this.$router.push('users/' + id)
+      console.log("this.currentHive.hiveId=",this.currentHive.hiveId)
+
     },
 
-    removeAllUsers() {
-      UserDataService.deleteAll()
+    editActiveHive(){
+      let id = this.currentHive.hiveId
+      this.$router.push('hive/' + id)
+    },
+
+    removeAllHives() {
+      HiveDataService.deleteAll()
         .then(response => {
           console.log(response.data);
           this.refreshList();
@@ -114,10 +121,10 @@ export default {
         });
     },
     
-    searchTitle() {
-      UserDataService.findByTitle(this.title)
+    searchByHiveName() {
+      HiveDataService.findByHiveName(this.hiveName)
         .then(response => {
-          this.users = response.data;
+          this.hives = response.data;
           console.log(response.data);
         })
         .catch(e => {
@@ -126,7 +133,7 @@ export default {
     }
   },
   mounted() {
-    this.retrieveUsers();
+    this.retrieveHives();
   }
 };
 </script>
