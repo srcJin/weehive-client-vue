@@ -23,12 +23,18 @@ import HiveList from "src/pages/HiveManager/HiveList";
 import AddHive from "src/pages/HiveManager/AddHive";
 import HiveCard from "src/pages/HiveManager/HiveCard";
 import EditHive from "src/pages/HiveManager/EditHive";
+import FirstPage from "src/pages/FirstPage"
 
 const routes = [
   {
     path: "/",
     component: DashboardLayout,
     children: [
+      {
+        path: "/",
+        name: "FirstPage",
+        component: FirstPage,
+      },
       {
         path: "UserList",
         name: "UserList",

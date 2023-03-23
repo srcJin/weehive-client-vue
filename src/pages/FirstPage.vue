@@ -1,8 +1,10 @@
 <template>
   <card>
   <div class="content">
-    <div class="container-fluid">
+    <div class="container">
       <h1>Welcome to WeeHive!</h1>
+      <h2>👈 Click on the sidebar to start.</h2>
+
     </div>
   </div>
 </card>
