@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://localhost:3333/api",
+  // @note here is the base API address
+  baseURL: "https://weehive-server.onrender.com",
   headers: {
     "Content-type": "application/json",
   },
