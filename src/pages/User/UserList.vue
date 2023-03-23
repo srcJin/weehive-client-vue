@@ -25,10 +25,13 @@
           {{ user.userName }}
         </li>
       </ul>
-      <button class="m-3 btn btn-md btn-primary" @click="editActiveUser">
-        editActiveUser
+      <button class="m-1 btn btn-md btn-primary" @click="toAddUserPage">
+        New User
       </button>
-      <button class="m-3 btn btn-md btn-danger" @click="removeAllUsers">
+      <button class="m-1 btn btn-md btn-primary" @click="editActiveUser">
+        Edit Selected
+      </button>
+      <button class="m-1 btn btn-md btn-danger" @click="removeAllUsers">
         Remove All
       </button>
 
@@ -72,6 +75,7 @@ export default {
       users: [],
       currentUser: null,
       currentIndex: -1,
+      userName:"",
       aboutMe: ""
     };
   },
@@ -93,6 +97,9 @@ export default {
       this.currentIndex = -1;
     },
 
+    toAddUserPage() {
+      this.$router.push('/addUser');
+    },
 
     setActiveUser(user, index) {
       console.log("setActiveUser user=",user,"index=",index)
@@ -108,7 +115,7 @@ export default {
     },
 
     removeAllUsers() {
-      DataService.deleteAll()
+      DataService.deleteAllUser()
         .then(response => {
           console.log(response.data);
           this.refreshList();

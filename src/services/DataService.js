@@ -117,8 +117,9 @@ class DataService {
 
   updateUser(id, data) {
     console.log(
-      "DataService updateUser(id, data) http.put(`/user/${id}`, data)",
+      "DataService updateUser(id, data) http.put(`/user/${id}`, id=)",
       id,
+      "data=",
       data
     );
     return http.put(`/user/${id}`, data);

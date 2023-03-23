@@ -1,11 +1,11 @@
 <template>
   <card class="card-user">
-    <img slot="image" src="userBackgroundImage" alt="Header Image"/>
+    <img slot="image" src="../../images/UserHeader.jpg" alt="Header Image"/>
     <div class="author">
       <a href="#">
-        <img class="avatar border-gray" src="img/faces/defaultUserIcon.jpg" alt="User Icon"/>
+        <img class="avatar border-gray" src="../../images/defaultUserIcon.png" alt="User Icon"/>
 
-        <h4 class="title">Jin<br />
+        <h4 class="title">weeHiveUser<br />
           <small>Admin</small>
         </h4>
       </a>

@@ -16,7 +16,7 @@ export default {
       <a href="#">
         <img class="avatar border-gray" src="img/faces/defaultUserIcon.jpg" alt="User Icon"/>
 
-        <h4 class="title">Jin<br />
+        <h4 class="title">User<br />
           <small>Admin</small>
         </h4>
       </a>

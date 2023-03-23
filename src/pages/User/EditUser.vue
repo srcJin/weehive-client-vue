@@ -1,128 +1,158 @@
 <template>
-  <card>
-    <h4 slot="header" class="card-title">Edit User</h4>
+  <div v-if="currentUser">
+    <card>
+      <h4 slot="header" class="title">Edit User</h4>
     <form>
-      <div class="row">
-        <div class="col-md-5">
-          <base-input type="text"
-                    label="Username"
-                    placeholder="userName"
-                    v-model="user.userName">
-          </base-input>
-        </div>
-        <div class="col-md-3">
-          <base-input type="text"
-                    label="Password"
-                    placeholder="Password"
-                    v-model="user.password">
-          </base-input>
-        </div>
-        <div class="col-md-4">
-          <base-input type="email"
-                    label="Email"
-                    placeholder="Email"
-                    v-model="user.email">
-          </base-input>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <base-input type="text"
-                    label="adminType"
-                    placeholder="adminType"
-                    v-model="user.adminType">
-          </base-input>
-        </div>
-        <div class="col-md-6">
-          <base-input type="text"
-                    label="icon"
-                    placeholder="icon"
-                    v-model="user.icon">
-          </base-input>
-        </div>
-      </div>
-<!-- 
-      <div class="row">
-        <div class="col-md-12">
-          <base-input type="text"
-                    label="Address"
-                    placeholder="Home Address"
-                    v-model="user.address">
-          </base-input>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <base-input type="text"
-                    label="City"
-                    placeholder="City"
-                    v-model="user.city">
-          </base-input>
-        </div>
-        <div class="col-md-4">
-          <base-input type="text"
-                    label="Country"
-                    placeholder="Country"
-                    v-model="user.country">
-          </base-input>
-        </div>
-        <div class="col-md-4">
-          <base-input type="number"
-                    label="Postal Code"
-                    placeholder="ZIP Code"
-                    v-model="user.postalCode">
-          </base-input>
-        </div>
-      </div> -->
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label>About Me</label>
-            <textarea rows="5" class="form-control border-input"
-                      placeholder="Here can be your description"
-                      v-model="user.aboutMe">
-              </textarea>
+        <div class="row">
+          <div class="col-md-5">
+            <base-input
+              type="text"
+              label="Username"
+              v-model="currentUser.userName"
+            >
+            </base-input>
+          </div>
+          <div class="col-md-3">
+            <base-input
+              type="text"
+              label="Password"
+              v-model="currentUser.password"
+            >
+            </base-input>
+          </div>
+          <div class="col-md-4">
+            <base-input
+              type="email"
+              label="Email"
+              v-model="currentUser.email"
+            >
+            </base-input>
           </div>
         </div>
-      </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="updateProfile">
-          Edit User
-        </button>
-      </div>
-      <div class="clearfix"></div>
-    </form>
+
+        <div class="row">
+          <div class="col-md-6">
+            <base-input
+              type="text"
+              label="adminType"
+              v-model="currentUser.adminType"
+            >
+            </base-input>
+          </div>
+          <div class="col-md-6">
+            <base-input
+              type="text"
+              label="icon"
+              v-model="currentUser.icon"
+            >
+            </base-input>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>About Me</label>
+              <textarea
+                rows="5"
+                class="form-control border-input"
+                v-model="currentUser.aboutMe"
+              >
+              </textarea>
+            </div>
+          </div>
+        </div>
+
+        </form>
+    <div class = "mt-4">
+    <button
+      type="submit"
+      class="btn btn-primary me-3 badge-success"
+      @click="updateUser"
+    >
+      Update
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary me-3 badge-success"
+      @click="goBack"
+    >
+      Back
+    </button>
+    <button class="btn btn-danger me-3" @click="deleteUser">Delete</button>
+
+    <p class="mt-4">{{ message }}</p>
+  </div>
   </card>
+
+  </div>
+
+  <div v-else>
+    <br />
+    <p>Please click on a user...</p>
+  </div>
 </template>
+
 <script>
-  import Card from 'src/components/Cards/Card.vue'
+import DataService from "../../services/DataService";
 
-  export default {
-    components: {
-      Card
-    },
-    data () {
-      return {
-        user: {
-          userName: 'Jin',
-          email: 'hello@hello.com',
-          adminType: '1',
-          Icon: 'defaultUserIcon.png',
-          aboutMe: `Hi! I am a new beekeeper!`
-        }
-      }
-    },
-    methods: {
-      updateProfile () {
-        alert('Your data: ' + JSON.stringify(this.user))
-      }
-    }
-  }
+export default {
+  name: "EditUser",
+  data() {
+    return {
+      currentUser: null,
+      message: "",
+      userName:"",
+    };
+  },
 
+  methods: {
+    getUser(id) {
+      DataService.getUser(id)
+        .then((response) => {
+          this.currentUser = response.data;
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+    updateUser() {
+      console.log("this.currentUser=", this.currentUser);
+      DataService.updateUser(this.currentUser.userId, this.currentUser) //@note use this line to define which id to use
+        .then((response) => {
+          console.log(response.data);
+          this.message = "The information was updated successfully!";
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+    deleteUser() {
+      DataService.deleteUser(this.currentUser.userId)
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push({ name: "Users" });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+    goBack() {
+      this.$router.go(-1);
+    },
+  },
+
+  mounted() {
+    this.message = "";
+    console.log("mounted() this.$route.params=", this.$route.params);
+    this.getUser(this.$route.params.id);
+  },
+};
 </script>
-<style>
 
+<style>
 </style>

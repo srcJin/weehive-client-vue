@@ -82,7 +82,9 @@
       </div>
       <div v-else>
         <h4>New User Registered!</h4>
-        <button class="btn btn-success" @click="newForm">New</button>
+        <button class="btn btn-success" @click="newForm">New User</button>
+        <button class="btn btn-success" @click="toUserList">User List</button>
+
       </div>
     </card>
   </div>
@@ -100,7 +102,7 @@ export default {
   data() {
     return {
       user: {
-        userName: "jin",
+        userName: "weeHiveUser",
         password: "password",
         email: "hello@hello.com",
         adminType: 1,
@@ -140,6 +142,10 @@ export default {
       this.submitted = false;
       this.user = {};
     },
+
+    toUserList() {
+      this.$router.push('/userList');
+    }
   },
 };
 </script>

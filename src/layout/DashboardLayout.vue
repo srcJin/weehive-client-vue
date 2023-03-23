@@ -18,7 +18,7 @@
       </sidebar-link>
 
       <!-- test -->
-      <sidebar-link to="/UserList">
+      <!-- <sidebar-link to="/UserList">
         <i class="nc-icon nc-notes"></i>
         <p>UserList</p>
       </sidebar-link>
@@ -34,7 +34,6 @@
         <i class="nc-icon nc-notes"></i>
         <p>EditUser</p>
       </sidebar-link>
-
       <sidebar-link to="/HiveList">
         <i class="nc-icon nc-notes"></i>
         <p>HiveList</p>
@@ -50,7 +49,7 @@
       <sidebar-link to="/EditHive">
         <i class="nc-icon nc-notes"></i>
         <p>EditHive</p>
-      </sidebar-link>
+      </sidebar-link> -->
       
       <!-- <sidebar-link to="/hiveworld">
         <i class="nc-icon nc-paper-2"></i>
@@ -68,10 +67,10 @@
         <i class="nc-icon nc-bell-55"></i>
         <p>Messages</p>
       </sidebar-link>
-      <sidebar-link to="/tutorials">
+      <!-- <sidebar-link to="/tutorials">
         <i class="nc-icon nc-notes"></i>
         <p>API</p>
-      </sidebar-link>
+      </sidebar-link> -->
 
     </side-bar>
     <div class="main-panel">

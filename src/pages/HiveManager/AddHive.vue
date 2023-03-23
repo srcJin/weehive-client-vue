@@ -74,7 +74,9 @@
       </div>
       <div v-else>
         <h4>New Hive Registered!</h4>
-        <button class="btn btn-success" @click="newForm">New</button>
+        <button class="btn btn-success" @click="newForm">New Hive</button>
+        <button class="btn btn-success" @click="toHiveList">Hive List</button>
+
       </div>
     </card>
   </div>
@@ -130,6 +132,10 @@ export default {
       this.submitted = false;
       this.hive = {};
     },
+
+    toHiveList() {
+      this.$router.push('/hiveList');
+    }
   },
 };
 </script>

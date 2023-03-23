@@ -1,128 +1,154 @@
 <template>
-  <card>
-    <h4 slot="header" class="card-title">Edit Hive Info</h4>
-    <form>
-      <div class="row">
-        <div class="col-md-5">
-          <base-input type="text"
-                    label="Username"
-                    placeholder="userName"
-                    v-model="user.userName">
-          </base-input>
-        </div>
-        <div class="col-md-3">
-          <base-input type="text"
-                    label="Password"
-                    placeholder="Password"
-                    v-model="user.password">
-          </base-input>
-        </div>
-        <div class="col-md-4">
-          <base-input type="email"
-                    label="Email"
-                    placeholder="Email"
-                    v-model="user.email">
-          </base-input>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <base-input type="text"
-                    label="adminType"
-                    placeholder="adminType"
-                    v-model="user.adminType">
-          </base-input>
-        </div>
-        <div class="col-md-6">
-          <base-input type="text"
-                    label="icon"
-                    placeholder="icon"
-                    v-model="user.icon">
-          </base-input>
-        </div>
-      </div>
-<!-- 
-      <div class="row">
-        <div class="col-md-12">
-          <base-input type="text"
-                    label="Address"
-                    placeholder="Home Address"
-                    v-model="user.address">
-          </base-input>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <base-input type="text"
-                    label="City"
-                    placeholder="City"
-                    v-model="user.city">
-          </base-input>
-        </div>
-        <div class="col-md-4">
-          <base-input type="text"
-                    label="Country"
-                    placeholder="Country"
-                    v-model="user.country">
-          </base-input>
-        </div>
-        <div class="col-md-4">
-          <base-input type="number"
-                    label="Postal Code"
-                    placeholder="ZIP Code"
-                    v-model="user.postalCode">
-          </base-input>
-        </div>
-      </div> -->
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label>About Me</label>
-            <textarea rows="5" class="form-control border-input"
-                      placeholder="Here can be your description"
-                      v-model="user.aboutMe">
-              </textarea>
+  <div v-if="currentHive">
+    <card>
+      <h4 slot="header" class="title">Edit Hive</h4>
+      <form>
+        <div class="row">
+          <div class="col-md-4">
+            <base-input
+              type="text"
+              label="Hivename"
+              placeholder="hiveName"
+              v-model="currentHive.hiveName"
+            >
+            </base-input>
+          </div>
+          <div class="col-md-4">
+            <base-input
+              type="queenName"
+              label="queenName"
+              placeholder="queenName"
+              v-model="currentHive.queenName"
+            >
+            </base-input>
           </div>
         </div>
-      </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="updateProfile">
-          Edit User
+
+        <div class="row">
+          <div class="col-md-4">
+            <base-input
+              type="text"
+              label="inspection"
+              placeholder="inspection"
+              v-model="currentHive.inspection"
+            >
+            </base-input>
+          </div>
+          <div class="col-md-4">
+            <base-input
+              type="text"
+              label="location"
+              placeholder="location"
+              v-model="currentHive.location"
+            >
+            </base-input>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label>comment</label>
+              <textarea
+                rows="5"
+                class="form-control border-input"
+                placeholder="Here can be your comment"
+                v-model="currentHive.comment"
+              >
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="mt-4">
+        <button
+          type="submit"
+          class="btn btn-primary me-3 badge-success"
+          @click="goBack"
+        >
+          Back
         </button>
+        <button
+          type="submit"
+          class="btn btn-primary me-3 badge-success"
+          @click="updateHive"
+        >
+          Update
+        </button>
+
+        <button class="btn btn-danger me-3" @click="deleteHive">Delete</button>
+
+        <p class="mt-4">{{ message }}</p>
       </div>
-      <div class="clearfix"></div>
-    </form>
-  </card>
+    </card>
+  </div>
+
+  <div v-else>
+    <br />
+    <p>Please click on a hive...</p>
+  </div>
 </template>
+
 <script>
-  import Card from 'src/components/Cards/Card.vue'
+import DataService from "../../services/DataService";
 
-  export default {
-    components: {
-      Card
-    },
-    data () {
-      return {
-        user: {
-          userName: 'Jin',
-          email: 'hello@hello.com',
-          adminType: '1',
-          Icon: 'defaultUserIcon.png',
-          aboutMe: `Hi! I am a new beekeeper!`
-        }
-      }
-    },
-    methods: {
-      updateProfile () {
-        alert('Your data: ' + JSON.stringify(this.user))
-      }
-    }
-  }
+export default {
+  name: "EditHive",
+  data() {
+    return {
+      currentHive: null,
+      message: "",
+      hiveName: "",
+    };
+  },
 
+  methods: {
+    getHive(id) {
+      DataService.getHive(id)
+        .then((response) => {
+          this.currentHive = response.data;
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+    updateHive() {
+      console.log("this.currentHive=", this.currentHive);
+      DataService.updateHive(this.currentHive.hiveId, this.currentHive) //@note use this line to define which id to use
+        .then((response) => {
+          console.log(response.data);
+          this.message = "The information was updated successfully!";
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+    deleteHive() {
+      DataService.deleteHive(this.currentHive.hiveId)
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push({ name: "Hives" });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+    goBack() {
+      this.$router.go(-1);
+    },
+  },
+
+  mounted() {
+    this.message = "";
+    console.log("mounted() this.$route.params=", this.$route.params);
+    this.getHive(this.$route.params.id);
+  },
+};
 </script>
-<style>
 
-</style>
+<style></style>

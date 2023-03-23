@@ -1,39 +1,23 @@
 <template>
   <div id="app">
-    <grid-layout
-      :layout.sync="layout1"
-      :responsive-layouts="layouts"
-      :col-num="12"
-      :row-height="30"
-      :is-draggable="draggable"
-      :is-resizable="resizable"
-      :vertical-compact="true"
-      :use-css-transforms="true"
-      :responsive="responsive"
-      @breakpoint-changed="breakpointChangedEvent"
-    >
-      <grid-item
-        v-for="item in layout1"
-        :x="item.x"
-        :y="item.y"
-        :w="item.w"
-        :h="item.h"
-        :i="item.i"
-        :key="item.i"
-      >
+    <grid-layout :layout.sync="layout1" :responsive-layouts="layouts" :col-num="12" :row-height="30"
+      :is-draggable="draggable" :is-resizable="resizable" :vertical-compact="true" :use-css-transforms="true"
+      :responsive="responsive" @breakpoint-changed="breakpointChangedEvent">
+      <grid-item v-for="item in layout1" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i">
         <component :is="items[item.i].content"></component>
       </grid-item>
     </grid-layout>
 
-    <div class="layoutJSON">
+    <!-- <div class="layoutJSON">
       Displayed as <code>[x, y, w, h]</code>:
-      <div class="columns">
-        <div v-for="item in layout" v-bind:key="item.id">
-          <b>{{ item.i }}</b
-          >: [{{ item.x }}, {{ item.y }}, {{ item.w }}, {{ item.h }}]
+      <div class="container">
+        <div class="columns">
+          <div v-for="item in layout" v-bind:key="item.id">
+            <b>{{ item.i }}</b>: [{{ item.x }}, {{ item.y }}, {{ item.w }}, {{ item.h }}]
+          </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- <hr /> -->
     <input type="checkbox" v-model="draggable" /> Draggable
     <input type="checkbox" v-model="resizable" /> Resizable
@@ -48,6 +32,7 @@ import Content from "./Content";
 import Chart from "./Chart";
 
 export default {
+
   name: "App",
   components: {
     GridLayout: VueGridLayout.GridLayout,
@@ -60,31 +45,41 @@ export default {
     resizable: true,
     responsive: true,
     layout1: [
-    { x: 0, y: 0, w: 5, h: 10, i: "item-1"},
-    { x: 0, y: 11, w: 5, h: 11, i: "item-2"},
-    { x: 5, y: 0, w: 3, h: 7, i: "item-3" },
-    { x: 5, y: 7, w: 3, h: 7, i: "item-4" },
-    { x: 5, y: 14, w: 3, h: 7, i: "item-5" },
-
+      { x: 0, y: 0, w: 5, h: 12, i: "item-1" },
+      { x: 0, y: 11, w: 5, h: 10, i: "item-2" },
+      { x: 5, y: 0, w: 3, h: 9, i: "item-3" },
+      { x: 5, y: 7, w: 3, h: 9, i: "item-4" },
+      { x: 5, y: 14, w: 3, h: 4, i: "item-5" },
     ],
     items: {
       "item-1": {
         content: () => import("./Dashboard/HiveInfo.vue"),
       },
       "item-2": {
-        content: () => import("./Dashboard/LineChart.vue"),
+        content: () => import("./Dashboard/BarChart.vue"),
       },
       "item-3": {
-        content: () => import("./Dashboard/HiveInfo.vue"),
+        content: () => import("./User/UserCard.vue"),
       },
       "item-4": {
-        content: () => import("./Dashboard/HiveInfo.vue"),
+        content: () => import("./Dashboard/LineChart.vue"),
       },
       "item-5": {
         content: () => import("./Dashboard/Stats.vue"),
       },
     },
   }),
+  props: {
+    layouts: {
+      type: Array,
+      required: true,
+    },
+  },
+  methods: {
+    breakpointChangedEvent: function () {
+      console.log("Breakpoint changed.");
+    },
+  },
 };
 </script>
 
@@ -92,16 +87,20 @@ export default {
 .vue-grid-layout {
   /* background: #eee; */
 }
+
 .vue-grid-item:not(.vue-grid-placeholder) {
   background: #ffffff;
   border: 1px solid rgb(170, 170, 170);
 }
+
 .vue-grid-item .resizing {
   opacity: 0.9;
 }
+
 .vue-grid-item .static {
   background: #cce;
 }
+
 .vue-grid-item .text {
   font-size: 24px;
   text-align: center;
@@ -114,16 +113,20 @@ export default {
   height: 100%;
   width: 100%;
 }
+
 .vue-grid-item .no-drag {
   height: 100%;
   width: 100%;
 }
+
 .vue-grid-item .minMax {
   font-size: 12px;
 }
+
 .vue-grid-item .add {
   cursor: pointer;
 }
+
 .vue-draggable-handle {
   position: absolute;
   width: 20px;

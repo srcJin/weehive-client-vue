@@ -45,11 +45,10 @@ const routes = [
         component: UserCard,
       },      
       {
-        path: "EditUser",
+        path: "/user/:id",
         name: "EditUser",
         component: EditUser,
       },
-
 
       {
         path: "HiveList",
@@ -68,28 +67,27 @@ const routes = [
         component: HiveCard,
       },      
       {
-        path: "EditHive",
+        path: "/hive/:id",
         name: "EditHive",
         component: EditHive,
       },
 
+      // {
+      //   path: "/tutorials",
+      //   name: "tutorials",
+      //   component: TutorialList,
+      // },
+      // {
+      //   path: "/tutorials/:id",
+      //   name: "tutorial-details",
+      //   component: Tutorial
+      // },
 
-      {
-        path: "/tutorials",
-        name: "tutorials",
-        component: TutorialList,
-      },
-      {
-        path: "/tutorials/:id",
-        name: "tutorial-details",
-        component: Tutorial
-      },
-
-      {
-        path: "/add",
-        name: "add",
-        component: AddTutorial
-      },
+      // {
+      //   path: "/add",
+      //   name: "add",
+      //   component: AddTutorial
+      // },
 
       {
         path: "dashboard",

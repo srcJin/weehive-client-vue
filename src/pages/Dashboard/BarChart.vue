@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="app">
-      <apexcharts width="100%" height="300vh" type="bar" :options="chartOptions" :series="series"></apexcharts>
+      <apexcharts width="100%" height="300vh" type="line" :options="chartOptions" :series="series"></apexcharts>
       <div>
         <button @click="updateChart">Update!</button>
     </div>
@@ -22,13 +22,16 @@
           chartOptions: {
             chart: {
               id: 'vuechart-example',
+              colors:['#ffd1b7']
+            },
+            stroke: {
+              width: 5,
+              curve: 'smooth',
+              colors:['#ffd1b7']
             },
             xaxis: {
               categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
             },
-            fill: {
-              colors:['#FDD1b7'],
-              },
           },
           series: [{
             name: 'series-1',

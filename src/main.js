@@ -23,7 +23,7 @@ import LightBootstrap from "./light-bootstrap-main";
 // router setup
 import routes from "./vueroutes/vueroutes";
 
-import "./registerServiceWorker";
+// import "./registerServiceWorker";
 // plugin setup
 Vue.use(VueRouter);
 Vue.use(LightBootstrap);

@@ -15,6 +15,7 @@
     </div>
     <div class="col-md-6">
       <h4>Hive List</h4>
+      
       <ul class="list-group">
         <li class="list-group-item"
           :class="{ active: index == currentIndex }"
@@ -22,13 +23,17 @@
           :key="index"
           @click="setActiveHive(hive, index)"
         >
-          {{ hive.title }}
+          {{ hive.hiveName }}
         </li>
+
       </ul>
-      <button class="m-3 btn btn-md btn-primary" @click="editActiveHive">
-        editActiveHive
+      <button class="m-1 btn btn-md btn-primary" @click="toAddHivePage">
+        New Hive
       </button>
-      <button class="m-3 btn btn-md btn-danger" @click="removeAllHives">
+      <button class="m-1 btn btn-md btn-primary" @click="editActiveHive">
+        Edit Selected
+      </button>
+      <button class="m-1 btn btn-md btn-danger" @click="removeAllHives">
         Remove All
       </button>
     </div>
@@ -70,7 +75,7 @@ export default {
       hives: [],
       currentHive: null,
       currentIndex: -1,
-      title: ""
+      hiveName:"",
     };
   },
   methods: {
@@ -91,10 +96,9 @@ export default {
       this.currentIndex = -1;
     },
 
-    // @todo add a new function to do both setActiveHive and push to new page
-    trigger(hive, index) {
+    toAddHivePage() {
+      this.$router.push('/addHive');
     },
-
 
     setActiveHive(hive, index) {
       console.log("setActiveHive hive=",hive,"index=",index)
@@ -111,7 +115,7 @@ export default {
     },
 
     removeAllHives() {
-      HiveDataService.deleteAll()
+      HiveDataService.deleteAllHive()
         .then(response => {
           console.log(response.data);
           this.refreshList();
